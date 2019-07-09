@@ -1,25 +1,35 @@
+function swap(arr,i,j){
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 function sort(arr,left,right){
     if(left>=right){
         return;
     }
     let i=left,j=right,key=arr[left];
     while(i<j){
-        while(i<j&&arr[j]>=key){
-            j--;
-        }
-        arr[i] = arr[j];
-
-        while(i<j&&arr[i]<=key){
+        while(arr[i]<key){
             i++;
         }
-        arr[j]=arr[i];
+        while(arr[j]>key){
+            j--;
+        }
+        // console.log(arr,i,j,key);
+        if(i<j){
+            swap(arr,i,j);
+            i++;
+            j--;
+        }else if(i==j){
+            i++;
+        }
+
     }
-    arr[i] = key;
-    sort(arr,left,i-1);
-    sort(arr,i+1,right);
+    sort(arr,left,j);
+    sort(arr,i,right);    
 }
 
-let arr = [1,45,11,1220,136,360,11];
+let arr = [1,45,11,1220,136,360,11,45];
 // sort(arr,0,arr.length-1);
 // console.log(arr);
 
@@ -36,5 +46,18 @@ function insert_sort(arr){
     }
 }
 
-insert_sort(arr);
+// insert_sort(arr);
+// console.log(arr);
+
+function bubble_sort(arr){
+    for(let i=0;i<arr.length;i++){
+        for(let j=i+1;j<arr.length;j++){
+            if(arr[j]<arr[i]){
+                swap(arr,i,j);
+            }
+        }
+    }
+}
+
+bubble_sort(arr);
 console.log(arr);
