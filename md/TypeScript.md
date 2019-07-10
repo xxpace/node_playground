@@ -6,7 +6,53 @@
 
 TS带来了什么？
 
-ts是面向对象对象的编程语言，类，接口，命名空间，泛型，静态类型
+类型系统，类，接口，命名空间，泛型
 
 静态类型检查可以尽早的发现逻辑错误，而不是上线后才发现。
+
+```typescript
+interface Data{
+	id:string;
+	reward_description:string;
+}
+let data:Data = {id:"1",reward_description:"奖励提示"};
+console.log(data.reward_desc);//ts会在"编译"时候报错
+let data = {id:"1",reward_description:"奖励提示"};
+console.log(data.reward_desc);//js在执行时候报错
+```
+
+命名空间很好的解决了，js全局变量名污染的问题，方便组织代码。
+
+```typescript
+//ts
+namespace egret{
+	export class DisplayObject{
+        
+    }
+}
+//相当于js
+window.egret = {};
+window.egret = DisplayObject(){};
+```
+
+ts加入了枚举
+
+```typescript
+//ts
+enum Direction{
+	Up = 1,
+	Down,
+	Left,
+	Right
+}
+//js需要这样实现
+var Direction;
+(function (Direction) {
+    Direction[Direction["Up"] = 1] = "Up";
+    Direction[Direction["Down"] = 2] = "Down";
+    Direction[Direction["Left"] = 3] = "Left";
+    Direction[Direction["Right"] = 4] = "Right";
+})(Direction || (Direction = {}));
+
+```
 
