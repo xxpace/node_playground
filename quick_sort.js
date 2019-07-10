@@ -59,5 +59,26 @@ function bubble_sort(arr){
     }
 }
 
-bubble_sort(arr);
+// bubble_sort(arr);
+// console.log(arr);
+
+function merge_sort(arr){
+    let len = arr.length;
+    let num = Math.ceil(len/2);
+    let i = 0;
+    while(i<num){
+        let cIndex = i*2;
+        let next = cIndex+1;
+        if(next<len){
+            if(arr[next]>arr[cIndex]){
+                swap(arr,next,cIndex);
+            }
+        }
+        i++;
+    }
+}
+
 console.log(arr);
+merge_sort(arr);
+console.log(arr);
+
