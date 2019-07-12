@@ -78,7 +78,37 @@ function merge_sort(arr){
     }
 }
 
-console.log(arr);
-merge_sort(arr);
+// console.log(arr);
+// merge_sort(arr);
+// console.log(arr);
+
+function max_heapify(arr,start,end){
+    let dad = start;
+    let son = start*2+1;
+    while(son<=end){
+        if(son+1<=end&&arr[son]<arr[son+1]){
+            son++;
+        }
+        if(arr[dad]>arr[son]){
+            return;
+        }else{
+            swap(arr,dad,son);
+            dad = son;
+            son = dad*2+1;
+        }
+    }
+}
+
+function heap_sort(arr,len){
+    for(let i=len/2-1;i>=0;i--){
+        max_heapify(arr,i,len-1);
+    }
+    for(let i = len-1;i>0;i--){
+        swap(arr,0,i);
+        max_heapify(arr,0,i-1);
+    }
+}
+console.log("heap");
+heap_sort(arr,arr.length);
 console.log(arr);
 
