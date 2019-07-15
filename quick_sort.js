@@ -78,6 +78,34 @@ function merge_sort(arr){
     }
 }
 
+let arr_1 = [1,4,7];
+let arr_2 = [2,5,8,11,16];
+
+function merge(arr_1,arr_2){
+    let arr = [];
+    let i = 0,
+        start_1 = 0;
+        start_2 = 0;
+    while(start_1<arr_1.length&&start_2<arr_2.length){
+        if(arr_1[start_1]<=arr_2[start_2]){
+            arr[i] = arr_1[start_1];
+            start_1++;
+        }else {
+            arr[i] = arr_2[start_2];
+            start_2++;
+        }
+        i++;
+    }
+    let bool = start_1<=arr_1.length;
+    let lastArr = bool?arr_2:arr_1;
+    let index = bool?start_2:start_1;
+    for(let j=index;j<lastArr.length;j++){
+        arr[i] = lastArr[j];
+        i++;
+    }
+    return arr;
+}
+console.log(merge(arr_1,arr_2));
 // console.log(arr);
 // merge_sort(arr);
 // console.log(arr);
@@ -108,7 +136,7 @@ function heap_sort(arr,len){
         max_heapify(arr,0,i-1);
     }
 }
-console.log("heap");
-heap_sort(arr,arr.length);
-console.log(arr);
+// console.log("heap");
+// heap_sort(arr,arr.length);
+// console.log(arr);
 
